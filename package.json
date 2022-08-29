@@ -1,0 +1,25 @@
+{
+  "homepage": "https://github.com/wfercanas/markdown#readme",
+  "name": "markdown",
+  "version": "1.0.0",
+  "description": "Render markdown from GitHub in HTML",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wfercanas/markdown.git"
+  },
+  "keywords": [
+    "markdown",
+    "github",
+    "html"
+  ],
+  "author": "wfercanas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wfercanas/markdown/issues"
+  }
+}
