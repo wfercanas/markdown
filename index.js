@@ -1,4 +1,3 @@
-import { Octokit } from "https://cdn.skypack.dev/octokit";
 import { token } from "./src/token.js";
 
 const article = document.createElement("article");
@@ -6,24 +5,22 @@ const body = document.getElementsByTagName("body")[0];
 
 const converter = new showdown.Converter();
 
-const octokit = new Octokit({
-  auth: token,
-});
+const API =
+  "https://api.github.com/repos/wfercanas/markdown/contents/articles/test.md";
+async function testFetch() {
+  const response = await fetch(API, {
+    method: "GET",
+    headers: {
+      authorization: `token ${token}`,
+      "Content-Type": "text/html",
+    },
+  });
 
-async function test() {
-  const response = await octokit.request(
-    "GET /repos/{owner}/{repo}/contents/{path}",
-    {
-      owner: "wfercanas",
-      repo: "markdown",
-      path: "/articles/test.md",
-    }
-  );
-
-  const data = atob(response.data.content);
-  const html = converter.makeHtml(data);
+  const data = await response.json();
+  const content = atob(data.content);
+  const html = converter.makeHtml(content);
   article.innerHTML = html;
   body.appendChild(article);
 }
 
-test();
+testFetch();
