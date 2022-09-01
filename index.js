@@ -17,7 +17,10 @@ async function testFetch() {
   });
 
   const data = await response.json();
-  const content = atob(data.content);
+  const document = atob(data.content);
+  const [metadata, content] = document.split("<--");
+  console.log(metadata);
+
   const html = converter.makeHtml(content);
   article.innerHTML = html;
   body.appendChild(article);
